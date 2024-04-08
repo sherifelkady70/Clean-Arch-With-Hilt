@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
     @Singleton
     @Provides

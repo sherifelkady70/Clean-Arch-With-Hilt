@@ -1,9 +1,10 @@
-package com.route.cleanarch_with_hilt
+package com.route.cleanarch_with_hilt.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.route.cleanarch_with_hilt.R
 import com.route.cleanarch_with_hilt.domain.entity.MyModelItem
 import com.route.cleanarch_with_hilt.domain.usecase.UseCase
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,13 +30,12 @@ class MainActivity : AppCompatActivity() {
         getUseCase()
     }
 
-
     @OptIn(DelicateCoroutinesApi::class)
     private fun getUseCase() = GlobalScope.launch(Dispatchers.IO){
-        val result : List<MyModelItem> = getUseCase.invoke().await().filter { it.id== 2 }
+        val result : List<MyModelItem> = getUseCase.invoke().await().filter {it.id== 2}
         withContext(Dispatchers.Main){
             textView.text = result.toString()
-            Log.d("getUseCase","${ textView.text}")
+            Log.d("getUseCase","${textView.text}")
         }
     }
 }
